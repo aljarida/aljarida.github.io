@@ -1,27 +1,55 @@
-/* Reset default margin and padding */
+/* General reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Set a monochrome color scheme and monospaced font */
+/* Body styles */
 body {
-    font-family: 'Courier New', Courier, monospace;
-    color: #333;
-    background-color: #f9f9f9;
+    overflow-y: scroll;
+    font-family: 'Fira Code', monospace;
+    color: #e0e0e0;
+    background: linear-gradient(0deg, #1a1a1a, #111111); /* Smooth gradient */
     line-height: 1.6;
+    font-size: 16px;
+    padding-bottom: 80px; /* Space for the footer */
+    min-height: 100vh; /* Ensure body covers full viewport height */
+    background-attachment: fixed; /* Keep background fixed */
 }
 
-/* Header and navigation styles */
+/* Header styles */
 header {
-    background-color: #333;
-    color: #fff;
+    background: linear-gradient(90deg, #1e2a38, #2c3e50);
+    color: #e0e0e0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Header overlay effect */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(0,0,0,0));
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Navigation styles */
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 nav ul li {
@@ -30,40 +58,105 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #e0e0e0;
     text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    text-decoration: underline;
+    color: #a4c2f4;
+}
+
+nav ul li a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #a4c2f4;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* Main content styling */
 main {
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Section styles */
 section {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
+/* Header styles for sections */
 .intro h1,
 .experience h1,
 .projects h1,
-.contact h1 {
-    border-bottom: 2px solid #333;
+.contact h1,
+.assignments h1 {
+    font-size: 28px;
+    border-bottom: 2px solid #2c3e50;
     padding-bottom: 10px;
     margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
-/* Footer styling */
+h2, h2 a {
+    padding-top: 1rem;
+}
+
+/* List styles */
+ul {
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Footer styles */
 footer {
-    background-color: #333;
-    color: #fff;
+    background: linear-gradient(90deg, #1e2a38, #2c3e50);
+    color: #e0e0e0;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     position: fixed;
     width: 100%;
     bottom: 0;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+
+    main {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
 }
 
